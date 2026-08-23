@@ -1,7 +1,7 @@
 {
-  "name": "chapa-tu-licencia",
+  "name": "chapa-tu-licencia-v2",
   "private": true,
-  "version": "1.0.0",
+  "version": "2.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@vitejs/plugin-react": "^4.3.4",
-    "vite": "^6.0.5",
+    "vite": "^6.0.0",
     "typescript": "^5.7.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

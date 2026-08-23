@@ -1,6 +1,6 @@
-# Chapa Tu Licencia
+# Chapa Tu Licencia V2
 
-Proyecto React + Vite preparado para Netlify.
+Plataforma comercial React + Vite.
 
 Instalación:
 
@@ -9,4 +9,4 @@ npm install
 npm run dev
 
 Deploy:
-Conectar repositorio GitHub con Netlify.
+Netlify conectado a GitHub.

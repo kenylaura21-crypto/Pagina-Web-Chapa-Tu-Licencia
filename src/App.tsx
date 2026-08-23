@@ -1,103 +1,81 @@
-import React from 'react';
-import {BrowserRouter, Routes, Route, Link} from 'react-router-dom';
+import {BrowserRouter,Routes,Route,Link} from 'react-router-dom';
+import {Car, Bike, Truck, BusFront, ShieldCheck, Users, ClipboardCheck} from 'lucide-react';
 
 const licenses=[
- {name:'Auto A-I', text:'Aprende desde cero y prepárate para tu examen.'},
- {name:'Moto B-IIb', text:'Prácticas de moto lineal en circuito.'},
- {name:'Moto B-IIc', text:'Preparación para mototaxi.'},
- {name:'Camión A-IIb', text:'Recategorización profesional.'},
- {name:'Bus A-IIIc', text:'Preparación especializada.'}
+['A-I Auto',Car],
+['B-IIb Moto Lineal',Bike],
+['B-IIc Mototaxi',Bike],
+['A-IIb Camión',Truck],
+['A-IIIc Bus/Tráiler',BusFront]
 ];
 
-const packs=[
- {id:'auto-premium',name:'Pack Auto Premium',price:'S/240',detail:'5 clases prácticas'},
- {id:'moto-premium',name:'Pack Moto Premium',price:'S/180',detail:'5 clases prácticas'}
+const packages=[
+['Básico','3 clases','S/145'],
+['Premium ⭐','5 clases','S/240'],
+['Avanzado','7 clases','S/330']
 ];
 
 function Header(){
- return <header>
-  <div className="logo">CHAPA TU LICENCIA</div>
-  <nav>
-   <Link to="/">Inicio</Link>
-   <Link to="/paquetes">Paquetes</Link>
-   <Link to="/contacto">Contacto</Link>
-  </nav>
- </header>
+return <header>
+<div className="logo">CHAPA TU<br/>LICENCIA</div>
+<nav>
+<Link to="/">Inicio</Link>
+<Link to="/paquetes">Paquetes</Link>
+<Link to="/simulador">Simulador MTC</Link>
+<Link to="/contacto">Contacto</Link>
+</nav>
+<a className="cta" href="https://wa.me/51918122331">WhatsApp</a>
+</header>
 }
 
 function Home(){
- return <>
- <section className="hero">
-  <h1>Obtén tu licencia de conducir en Tacna</h1>
-  <p>Aprende, practica y prepárate con instructores especializados.</p>
-  <Link className="btn" to="/paquetes">Quiero mi licencia</Link>
- </section>
+return <>
+<section className="hero">
+<div>
+<p className="tag">ESCUELA DE MANEJO EN TACNA</p>
+<h1>Obtén tu licencia<br/><span>de conducir</span></h1>
+<p>Aprende desde cero con instructores profesionales y prepárate para aprobar.</p>
+<div>
+<a className="cta" href="https://wa.me/51918122331">Escríbenos ahora</a>
+<Link className="secondary" to="/paquetes">Ver paquetes</Link>
+</div>
+</div>
+<div className="car">🚘</div>
+</section>
 
- <section>
- <h2>¿Qué licencia necesitas?</h2>
- <div className="grid">
- {licenses.map(x=><article className="card">
-  <h3>{x.name}</h3>
-  <p>{x.text}</p>
- </article>)}
- </div>
- </section>
+<h2>¿Qué licencia necesitas?</h2>
+<section className="grid">
+{licenses.map(([n,I])=><article><I/><h3>{n}</h3><Link to="/licencias">Ver más</Link></article>)}
+</section>
 
- <section className="benefits">
- <h2>¿Por qué elegirnos?</h2>
- <p>✓ Simulador MTC</p>
- <p>✓ Circuito de práctica</p>
- <p>✓ Asesoría completa</p>
- </section>
- </>
+<section className="benefits">
+<div><ShieldCheck/> Circuito privado</div>
+<div><Users/> Instructores certificados</div>
+<div><ClipboardCheck/> Simulador MTC</div>
+</section>
+
+<h2>Paquetes más solicitados</h2>
+<section className="grid">
+{packages.map(p=><article>
+<h3>{p[0]}</h3>
+<p>{p[1]}</p>
+<h2>{p[2]}</h2>
+<Link to="/checkout">Comprar ahora</Link>
+</article>)}
+</section>
+</>
 }
 
-function Packages(){
- return <section>
- <h1>Paquetes</h1>
- <div className="grid">
- {packs.map(p=><article className="card">
- <h2>{p.name}</h2>
- <h3>{p.price}</h3>
- <p>{p.detail}</p>
- <Link className="btn" to={'/checkout/'+p.id}>Comprar</Link>
- </article>)}
- </div>
- </section>
-}
+function Page(){return <section className="page"><h1>Chapa Tu Licencia</h1><p>Contenido preparado para esta sección.</p></section>}
 
-function Checkout(){
- return <section>
- <h1>Reserva tu paquete</h1>
- <form className="form">
- <input placeholder="Nombre completo"/>
- <input placeholder="WhatsApp"/>
- <input placeholder="Correo"/>
- <button className="btn">Continuar</button>
- </form>
- </section>
+export default function App(){
+return <BrowserRouter>
+<Header/>
+<main>
+<Routes>
+<Route path="/" element={<Home/>}/>
+<Route path="*" element={<Page/>}/>
+</Routes>
+</main>
+</BrowserRouter>
 }
-
-function Contact(){
- return <section>
- <h1>Contacto</h1>
- <p>Av. Jorge Basadre 595 Oficina 1 - Tacna</p>
- <a className="btn" href="https://wa.me/51918122331">WhatsApp</a>
- </section>
-}
-
-function App(){
- return <BrowserRouter>
- <Header/>
- <main>
- <Routes>
-  <Route path="/" element={<Home/>}/>
-  <Route path="/paquetes" element={<Packages/>}/>
-  <Route path="/checkout/:id" element={<Checkout/>}/>
-  <Route path="/contacto" element={<Contact/>}/>
- </Routes>
- </main>
- </BrowserRouter>
-}
-
-export default App;

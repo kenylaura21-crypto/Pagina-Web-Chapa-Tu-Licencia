@@ -1,6 +1,4 @@
-# Chapa Tu Licencia V2
-
-Plataforma comercial React + Vite.
+# Chapa Tu Licencia Production Final
 
 Instalación:
 
@@ -8,5 +6,6 @@ npm install
 
 npm run dev
 
-Deploy:
-Netlify conectado a GitHub.
+Deploy Netlify:
+Build command: npm run build
+Publish: dist

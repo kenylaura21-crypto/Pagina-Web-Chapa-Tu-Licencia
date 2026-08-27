@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  body {
+    font-family: "Inter", system-ui, sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: "Manrope", system-ui, sans-serif;
+  }
+
+  :focus-visible {
+    outline: 3px solid #ed7318;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-pill px-6 py-3 text-sm font-semibold transition-colors duration-200 focus-visible:outline-offset-4 disabled:cursor-not-allowed disabled:opacity-60;
+  }
+  .btn-primary {
+    @apply btn bg-secondary text-white hover:bg-secondary-hover;
+  }
+  .btn-outline {
+    @apply btn border-2 border-primary text-primary hover:bg-primary hover:text-white;
+  }
+  .btn-outline-light {
+    @apply btn border-2 border-white/70 text-white hover:bg-white hover:text-primary;
+  }
+  .btn-whatsapp {
+    @apply btn bg-whatsapp text-white hover:brightness-95;
+  }
+  .btn-ghost {
+    @apply btn border border-line bg-white text-primary hover:border-primary;
+  }
+  .eyebrow {
+    @apply inline-block text-xs font-bold uppercase tracking-[0.18em] text-secondary;
+  }
+  .section {
+    @apply py-16 md:py-24;
+  }
+  .container-page {
+    @apply mx-auto w-full max-w-[1180px] px-5;
+  }
+  .card {
+    @apply rounded-card border border-line bg-white p-6 shadow-card;
+  }
+  .road-divider {
+    @apply h-[3px] w-full bg-road-dashes bg-[length:44px_3px] bg-repeat-x opacity-70;
+  }
+  .sr-only-focusable {
+    @apply sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:m-2 focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-white;
+  }
+}
